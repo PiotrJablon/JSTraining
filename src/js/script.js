@@ -4,6 +4,8 @@
   booksList = document.querySelector('.books-list');
   template = Handlebars.compile(document.querySelector('#template-book').innerHTML);
 
+  const favoriteBooks = [];
+
 // Functions //
 
   function render(){
@@ -14,5 +16,18 @@
     }
   }
 
+  function initActions(){
+    const bookImage = booksList.querySelectorAll('.book__image');
+    for (let book of bookImage){
+      book.addEventListener('dblclick', function(event){
+        event.preventDefault();
+        book.classList.add('favorite');
+        const bookId = book.getAttribute('data-id');
+        favoriteBooks.push(bookId);
+      });
+    }
+  }
+
   render();
+  initActions();
 }
