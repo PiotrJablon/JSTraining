@@ -8,11 +8,8 @@
 
   function render(){
     for (let book of dataSource.books){
-      console.log(dataSource.books)
-      generatedHTML = template(dataSource.books);
+      generatedHTML = template(book);
       element = utils.createDOMFromHTML(generatedHTML);
-      console.log(generatedHTML)
-      console.log(element)
       booksList.appendChild(element);
     }
   }
