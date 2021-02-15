@@ -21,9 +21,15 @@
     for (let book of bookImage){
       book.addEventListener('dblclick', function(event){
         event.preventDefault();
-        book.classList.add('favorite');
         const bookId = book.getAttribute('data-id');
-        favoriteBooks.push(bookId);
+        if (!book.classList.contains('favorite')){
+          book.classList.add('favorite');
+          favoriteBooks.push(bookId);
+        } else {
+          book.classList.remove('favorite');
+          favoriteBooks.splice(favoriteBooks.indexOf(bookId), 1);
+        }
+        console.log(favoriteBooks)
       });
     }
   }
